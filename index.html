@@ -12,246 +12,245 @@
   :root {
     --blue: #2563EB;
     --black: #0A0A0A;
-    --gray: #666;
-    --light: #f5f5f5;
+    --gray: #555;
+    --light: #F7F7F7;
+    --border: #EBEBEB;
   }
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
     background: #fff;
     color: var(--black);
-    line-height: 1.6;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Hero ── */
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HERO ── */
   .hero {
     background: var(--black);
     color: white;
-    padding: 80px 40px 72px;
+    padding: 80px 40px;
     position: relative;
     overflow: hidden;
   }
 
-  .hero::after {
-    content: '';
+  .hero-ring1 {
     position: absolute;
-    right: -80px; top: 50%;
+    right: -100px; top: 50%;
     transform: translateY(-50%);
-    width: 400px; height: 400px;
+    width: 500px; height: 500px;
     border-radius: 50%;
-    border: 60px solid #141414;
+    border: 1px solid rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+  .hero-ring2 {
+    position: absolute;
+    right: 50px; top: 50%;
+    transform: translateY(-50%);
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
     pointer-events: none;
   }
 
   .hero-inner {
-    max-width: 680px;
+    max-width: 760px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
   }
 
   .logo-row {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 48px;
+    gap: 12px;
+    margin-bottom: 40px;
+    grid-column: 1 / -1;
   }
 
-  /* アパーチャーロゴ */
-  .logo-mark {
-    width: 44px; height: 44px;
-    position: relative; flex-shrink: 0;
-  }
-  .logo-mark .r1 {
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    border: 2.5px solid rgba(255,255,255,0.9);
-  }
-  .logo-mark .r2 {
-    position: absolute; inset: 8px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.3);
-  }
-  .logo-mark .dot {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--blue);
-    box-shadow: 0 0 10px rgba(37,99,235,0.7);
-  }
+  .logo-svg { width: 36px; height: 36px; flex-shrink: 0; }
 
-  .logo-wordmark {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-  }
+  .logo-wordmark { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; }
   .logo-wordmark .gym  { color: #fff; }
   .logo-wordmark .lens { color: var(--blue); }
 
   .hero-name-ja {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 700;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     line-height: 1;
     margin-bottom: 8px;
   }
 
   .hero-name-en {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 4px;
     color: var(--blue);
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .hero-title {
     font-size: 15px;
     font-weight: 400;
-    color: #888;
-    margin-bottom: 32px;
+    color: #666;
+    margin-bottom: 28px;
   }
 
-  .hero-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .hero-contact a {
-    color: rgba(255,255,255,0.65);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color .2s;
-  }
+  .hero-contact { display: flex; flex-direction: column; gap: 5px; }
+  .hero-contact a { color: rgba(255,255,255,0.45); font-size: 13px; transition: color .2s; }
   .hero-contact a:hover { color: white; }
 
-  /* ── Sections ── */
-  .section {
-    padding: 64px 40px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .section + .section {
-    border-top: 1px solid #eee;
+  .hero-photo {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: #161616;
+    border: 1.5px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.5;
   }
 
+  /* ── SECTION ── */
+  .section {
+    padding: 72px 40px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .section + .section { border-top: 1px solid var(--border); }
+
   .section-label {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--blue);
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .section-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    line-height: 1.25;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
     margin-bottom: 16px;
   }
 
   .section-body {
     font-size: 16px;
     color: var(--gray);
-    line-height: 1.8;
-    max-width: 580px;
+    line-height: 1.85;
+    max-width: 600px;
   }
 
-  /* ── Timeline ── */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 8px;
-  }
-
-  .tl-item {
+  /* ── STATS ── */
+  .stats-row {
     display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 24px;
-    padding: 24px 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  .tl-item:last-child { border-bottom: none; }
-
-  .tl-year {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--blue);
-    padding-top: 2px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 36px;
   }
 
-  .tl-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 4px;
+  .stat-card {
+    background: var(--light);
+    border-radius: 14px;
+    padding: 24px 20px;
   }
 
-  .tl-body {
-    font-size: 14px;
-    color: var(--gray);
-    line-height: 1.7;
+  .stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 6px;
   }
+  .stat-num span { color: var(--blue); }
+  .stat-label { font-size: 13px; color: var(--gray); line-height: 1.5; }
 
-  /* ── Vision ── */
+  /* ── VISION ── */
   .vision-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 8px;
+    gap: 16px;
+    margin-top: 32px;
   }
 
-  @media (max-width: 600px) {
-    .vision-grid { grid-template-columns: 1fr; }
-    .hero-name-ja { font-size: 36px; }
+  .vision-card { background: var(--light); border-radius: 14px; padding: 24px 22px; }
+  .vc-icon { font-size: 24px; margin-bottom: 10px; }
+  .vc-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .vc-body { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+  /* ── PROGRESS ── */
+  .progress-list { display: flex; flex-direction: column; margin-top: 28px; }
+
+  .progress-item {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .progress-item:last-child { border-bottom: none; }
+
+  .progress-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    margin-top: 7px;
   }
 
-  .vision-card {
+  .progress-text { font-size: 15px; line-height: 1.6; }
+  .progress-text span { font-size: 13px; color: #999; display: block; margin-top: 2px; }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
     background: var(--light);
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 28px 24px;
+    margin-top: 28px;
   }
 
-  .vision-card .vc-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
   }
 
-  .vision-card .vc-title {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
+  .project-name { font-size: 16px; font-weight: 700; }
+  .project-year { font-size: 12px; color: var(--blue); font-weight: 600; letter-spacing: 1px; }
+  .project-stack { font-size: 11.5px; color: #999; margin-bottom: 12px; }
+  .project-body { font-size: 14px; color: var(--gray); line-height: 1.75; margin-bottom: 14px; }
 
-  .vision-card .vc-body {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.7;
-  }
+  .project-meta { display: flex; flex-direction: column; gap: 8px; }
+  .project-meta-item { font-size: 13px; color: var(--gray); line-height: 1.65; }
+  .project-meta-item strong { color: var(--black); font-weight: 600; }
 
   /* ── CTA ── */
-  .cta-section {
+  .cta {
     background: var(--black);
     color: white;
-    padding: 64px 40px;
+    padding: 72px 40px;
     text-align: center;
   }
 
-  .cta-section h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .cta-section p {
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 28px;
-  }
+  .cta h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 10px; }
+  .cta p  { font-size: 15px; color: #555; margin-bottom: 32px; }
 
   .cta-btn {
     display: inline-block;
@@ -259,114 +258,196 @@
     color: white;
     font-size: 15px;
     font-weight: 600;
-    padding: 14px 32px;
+    padding: 14px 36px;
     border-radius: 8px;
-    text-decoration: none;
-    letter-spacing: 0.2px;
+    transition: opacity .2s;
   }
+  .cta-btn:hover { opacity: 0.85; }
 
   footer {
     padding: 28px 40px;
     text-align: center;
     font-size: 12px;
     color: #bbb;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .hero-name-ja { font-size: 38px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .vision-grid { grid-template-columns: 1fr; }
+    .section { padding: 52px 24px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- HERO -->
 <div class="hero">
+  <div class="hero-ring1"></div>
+  <div class="hero-ring2"></div>
   <div class="hero-inner">
     <div class="logo-row">
-      <div class="logo-mark">
-        <div class="r1"></div>
-        <div class="r2"></div>
-        <div class="dot"></div>
-      </div>
+      <svg class="logo-svg" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="16.5" stroke="white" stroke-width="2.2"/>
+        <circle cx="18" cy="18" r="9.5" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-dasharray="2 2.5"/>
+        <circle cx="18" cy="18" r="5" fill="#2563EB"/>
+        <circle cx="15.5" cy="15.5" r="1.5" fill="rgba(255,255,255,0.35)"/>
+      </svg>
       <div class="logo-wordmark">
         <span class="gym">Gym</span><span class="lens">Eye</span>
       </div>
     </div>
 
-    <div class="hero-name-ja">兼村 大暉</div>
-    <div class="hero-name-en">Taiki Kanemura</div>
-    <div class="hero-title">Founder &amp; CEO, GymEye</div>
+    <div class="hero-text">
+      <div class="hero-name-ja">兼村 大暉</div>
+      <div class="hero-name-en">Taiki Kanemura</div>
+      <div class="hero-title">Founder &amp; CEO, GymEye</div>
+      <div class="hero-contact">
+        <a href="mailto:taikikanemura@gmail.com">taikikanemura@gmail.com</a>
+        <a href="https://gymeye.net">gymeye.net</a>
+      </div>
+    </div>
 
-    <div class="hero-contact">
-      <a href="mailto:taikikanemura@gmail.com">taikikanemura@gmail.com</a>
-      <a href="https://gymeye.com">gymeye.com</a>
+    <div class="hero-photo">写真<br>準備中</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="section">
+  <div class="section-label">Problem</div>
+  <div class="section-title">ジムの課題は、<br>「見てくれる人がいない」こと</div>
+  <div class="section-body">
+    フォームが正しいかわからない。何回やったか数えるのが面倒。パーソナルトレーナーは高すぎる。こうした課題が積み重なり、ほとんどのジム会員は短期間で辞めてしまう。
+  </div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num"><span>50</span>%</div>
+      <div class="stat-label">新規ジム会員が<br>2ヶ月以内に退会</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">¥<span>9,600</span></div>
+      <div class="stat-label">ジムが月額負担する<br>コーチ人件費（平均）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><span>48</span>%</div>
+      <div class="stat-label">器具を一人で<br>使えないと感じる初心者</div>
     </div>
   </div>
 </div>
 
-<!-- What I'm building -->
+<!-- SOLUTION -->
 <div class="section">
-  <div class="section-label">今やっていること</div>
-  <div class="section-title">AIがジムのトレーニングを<br>見える化する</div>
+  <div class="section-label">Solution</div>
+  <div class="section-title">GymEye —<br>AIがあなたのトレーニングを見る</div>
   <div class="section-body">
-    GymEye は、AIによるリアルタイム動作解析でトレーニングのレップを自動カウントし、フォームをフィードバックするシステムです。スマートフォンアプリからスタートし、将来的にはジムに設置するキオスク端末としての展開を目指しています。
+    スマートフォンのカメラで姿勢を解析し、レップ数を自動カウント。フォームのフィードバックをリアルタイムで提供する。トレーナーなしで、正確なトレーニングが可能になる。
   </div>
-</div>
-
-<!-- Vision -->
-<div class="section">
-  <div class="section-label">ビジョン</div>
-  <div class="section-title">ジムに革命を起こす</div>
   <div class="vision-grid">
     <div class="vision-card">
-      <div class="vc-icon">📷</div>
-      <div class="vc-title">AIレップカウント</div>
-      <div class="vc-body">カメラと機械学習で関節角度を解析し、正確なレップ数とフォームチェックをリアルタイムで提供。</div>
+      <div class="vc-icon">👁</div>
+      <div class="vc-title">リアルタイム姿勢解析</div>
+      <div class="vc-body">Vision フレームワークで関節角度を解析。ダンベルカール・スクワット等のレップを正確に自動カウント。</div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-icon">📊</div>
+      <div class="vc-title">トレーニング記録</div>
+      <div class="vc-body">体重推移・e1RM・セッション履歴をグラフで管理。成長を数値で可視化する。</div>
     </div>
     <div class="vision-card">
       <div class="vc-icon">🏢</div>
       <div class="vc-title">ジムキオスク展開</div>
-      <div class="vc-body">ジム内に専用端末を設置。使用していない間は広告を配信し、ジムの収益にも貢献するビジネスモデル。</div>
+      <div class="vc-body">ジム内に専用端末を設置。未使用時は広告を配信し、ジムの収益にも貢献するB2Bモデル。</div>
     </div>
     <div class="vision-card">
-      <div class="vc-icon">📈</div>
-      <div class="vc-title">トレーニング記録</div>
-      <div class="vc-body">体重推移・e1RM・セッション履歴をビジュアルで管理。成長を数値で実感できるプラットフォーム。</div>
-    </div>
-    <div class="vision-card">
-      <div class="vc-icon">🌐</div>
-      <div class="vc-title">SaaS &amp; ハードウェア</div>
-      <div class="vc-body">ソフトウェアとハードウェアを組み合わせたフィットネステック領域での新しいビジネスモデルを構築。</div>
+      <div class="vc-icon">📍</div>
+      <div class="vc-title">三脚設置で即使える</div>
+      <div class="vc-body">専用機材不要。既存のジムに三脚とスマートフォンを置くだけでプロトタイプとして機能する。</div>
     </div>
   </div>
 </div>
 
-<!-- Timeline -->
+<!-- TRACTION -->
 <div class="section">
-  <div class="section-label">これまでの歩み</div>
-  <div class="section-title">経歴</div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-year">2024–</div>
-      <div>
-        <div class="tl-title">GymEye — Founder &amp; CEO</div>
-        <div class="tl-body">AIを使ったリアルタイムトレーニング解析システムを開発。iOSアプリのプロトタイプ完成、ジムキオスク端末としての展開を構想中。</div>
+  <div class="section-label">Traction</div>
+  <div class="section-title">現在の進捗</div>
+  <div class="progress-list">
+    <div class="progress-item">
+      <div class="progress-dot"></div>
+      <div class="progress-text">
+        iOSアプリ プロトタイプ完成
+        <span>SwiftUI + Vision フレームワークでレップカウント実装済み</span>
       </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-year">現在</div>
-      <div>
-        <div class="tl-title">プロトタイプ開発 &amp; 実証</div>
-        <div class="tl-body">SwiftUI + Vision フレームワークで姿勢推定モデルを実装。ダンベルカール・スクワット等のレップ自動カウントを実現。</div>
+    <div class="progress-item">
+      <div class="progress-dot"></div>
+      <div class="progress-text">
+        ダンベルカール・スクワット等の主要種目に対応
+        <span>関節角度解析によるリアルタイム検出</span>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-dot"></div>
+      <div class="progress-text">
+        GymEye として商標出願・ドメイン取得
+        <span>2026年5月</span>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-dot" style="background:#ddd;"></div>
+      <div class="progress-text" style="color:#999;">
+        ジム内プロトタイプ設置・実証実験
+        <span>近日予定</span>
+      </div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-dot" style="background:#ddd;"></div>
+      <div class="progress-text" style="color:#999;">
+        ジムへのB2B提案開始
+        <span>近日予定</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="section">
+  <div class="section-label">Background</div>
+  <div class="section-title">これまで作ってきたもの</div>
+  <div class="section-body">
+    プロダクト開発とスタートアップの試行錯誤を繰り返してきた。失敗から学び、GymEye に至る。
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-name">Clamor（クラモア）</div>
+      <div class="project-year">2025</div>
+    </div>
+    <div class="project-stack">Next.js · Prisma · Supabase · 学生向けアンケートプラットフォーム</div>
+    <div class="project-body">
+      大学生が日常的にアンケートに答え、ポイントを獲得できるプラットフォーム。卒論調査でサンプルが集まらない学生と、Z世代のリアルなインサイトを得られない企業、双方のペインを解決する二面市場を構想した。
+    </div>
+    <div class="project-meta">
+      <div class="project-meta-item">
+        <strong>停止の理由：</strong> ユーザー獲得設計と収益化モデルを同時に解決できなかった。短い調査でエンゲージメントを保つことと、企業が買えるデータ品質を両立させることの難しさを実感。
+      </div>
+      <div class="project-meta-item">
+        <strong>得たもの：</strong> フルスタック開発、二面市場の設計、グロース戦略の難しさ。
       </div>
     </div>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
-  <h2>一緒に作りましょう</h2>
-  <p>フィットネステック・投資・コラボレーションに興味のある方はぜひ。</p>
+<div class="cta">
+  <h2>話しましょう</h2>
+  <p>投資・ジム実証実験・コラボレーションのご相談はお気軽に。</p>
   <a class="cta-btn" href="mailto:taikikanemura@gmail.com">メッセージを送る</a>
 </div>
 
-<footer>© 2026 GymEye. Taiki Kanemura.</footer>
+<footer>© 2026 GymEye / Taiki Kanemura</footer>
 
 </body>
 </html>
