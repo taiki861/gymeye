@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #1a1a1a;
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding: 80px 60px;
+  min-height: 100vh;
+}
+
+.label {
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* ━━━━━━━━━━━━━━━━━━
+   カード共通
+━━━━━━━━━━━━━━━━━━ */
+.card {
+  width: 1050px;
+  height: 600px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ━━━━━━━━━━━━━━━━━━
+   表面
+━━━━━━━━━━━━━━━━━━ */
+.front {
+  background: #ffffff;
+  padding: 52px 64px 52px 64px;
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ── ロゴ ── */
+.logo-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.logo-svg {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1;
+}
+.w-gym  { color: #0A0A0A; }
+.w-lens { color: #2563EB; }
+
+.sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: #C0C0C0;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* ── 名前 ── */
+.name-wrap {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.name-line {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  margin-bottom: 12px;
+}
+
+.name-ja {
+  font-size: 54px;
+  font-weight: 700;
+  color: #0A0A0A;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.name-en {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563EB;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #999;
+  letter-spacing: 0.1px;
+}
+
+/* ── 連絡先 ── */
+.contact-wrap {
+  grid-column: 1;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.clabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #2563EB;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.cval {
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #111;
+  letter-spacing: -0.2px;
+}
+
+/* ── QR ── */
+.qr-wrap {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 0;
+  gap: 8px;
+}
+
+.qr-frame {
+  width: 132px;
+  height: 132px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #EBEBEB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.qr-frame img {
+  width: 116px;
+  height: 116px;
+  display: block;
+}
+
+.qr-label {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #C8C8C8;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* 右上のアクセント線 */
+.front::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px;
+  height: 100%;
+  background: #2563EB;
+  border-radius: 0 24px 24px 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━
+   裏面
+━━━━━━━━━━━━━━━━━━ */
+.back {
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* グリッドテクスチャ */
+.back::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* 右の装飾リング */
+.back-ring {
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.back-ring::before {
+  content: '';
+  position: absolute;
+  inset: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.back-ring::after {
+  content: '';
+  position: absolute;
+  inset: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* 青いグロー */
+.back-glow {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.back-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.back-logo {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+}
+
+.back-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.back-wordmark {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 1;
+}
+.bw-gym  { color: #ffffff; }
+.bw-lens { color: #2563EB; }
+
+.back-tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<!-- 表面 -->
+<div>
+  <div class="label">FRONT</div>
+  <div class="card front">
+
+    <div class="logo-wrap">
+      <!-- SVGロゴ: カメラレンズ断面 -->
+      <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 外リング -->
+        <circle cx="21" cy="21" r="19.5" stroke="#0A0A0A" stroke-width="2.5"/>
+        <!-- 中リング -->
+        <circle cx="21" cy="21" r="12" stroke="#0A0A0A" stroke-width="1.2" stroke-dasharray="2 2.4"/>
+        <!-- 内円（青） -->
+        <circle cx="21" cy="21" r="6" fill="#2563EB"/>
+        <!-- レンズ反射 -->
+        <circle cx="18.5" cy="18.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+      </svg>
+      <div>
+        <div class="wordmark">
+          <span class="w-gym">Gym</span><span class="w-lens">Eye</span>
+        </div>
+        <div class="sub">AI Fitness Technology</div>
+      </div>
+    </div>
+
+    <div class="name-wrap">
+      <div class="name-line">
+        <span class="name-ja">兼村大暉</span>
+        <span class="name-en">Taiki Kanemura</span>
+      </div>
+      <div class="title">Founder &amp; CEO</div>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="contact-row">
+        <span class="clabel">Tel</span>
+        <span class="cval">080-9804-6325</span>
+      </div>
+      <div class="contact-row">
+        <span class="clabel">Mail</span>
+        <span class="cval">taikikanemura@gmail.com</span>
+      </div>
+      <div class="contact-row">
+        <span class="clabel">Web</span>
+        <span class="cval">gymeye.com</span>
+      </div>
+    </div>
+
+    <div class="qr-wrap">
+      <div class="qr-frame">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=232x232&margin=0&color=0A0A0A&bgcolor=FFFFFF&data=https%3A%2F%2Fgymeye.com"
+          alt="QR"
+        >
+      </div>
+      <div class="qr-label">PORTFOLIO</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 裏面 -->
+<div>
+  <div class="label">BACK</div>
+  <div class="card back">
+    <div class="back-ring"></div>
+    <div class="back-glow"></div>
+
+    <div class="back-content">
+      <!-- 白ロゴ -->
+      <svg class="back-logo" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="34" cy="34" r="32" stroke="white" stroke-width="3"/>
+        <circle cx="34" cy="34" r="19" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="2 3"/>
+        <circle cx="34" cy="34" r="9" fill="#2563EB"/>
+        <circle cx="30" cy="30" r="2.5" fill="rgba(255,255,255,0.4)"/>
+      </svg>
+
+      <div class="back-text">
+        <div class="back-wordmark">
+          <span class="bw-gym">Gym</span><span class="bw-lens">Eye</span>
+        </div>
+        <div class="back-tag">See Every Rep.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
